@@ -12,30 +12,28 @@ pip install fastapi uvicorn
 
 uvicorn app:app --reload
 
-
-
 --reload automatically restarts the server when you edit your code (very useful for development!)
 
 
 Once Uvicorn starts, it prints something like:
-Uvicorn running on http://127.0.0.1:8000
+Uvicorn running on http://127.0.0.1:8000 (if running locally), or if running in codespaces you will see the name of your codespace instead of 127.0.0.1:8000.
+
+
 
 Then you can visit:
-✔️ API root
-http://127.0.0.1:8000/
 
 ✔️ Auto generated Swagger UI
 http://127.0.0.1:8000/docs
 
 ✔️ Alternative ReDoc documentation
-http://127.0.0.1:8000/redoc
+/redoc
 
 Testing the endpoints:
 Health check
-http://127.0.0.1:8000/health
+/health
 
 Search staff
-http://127.0.0.1:8000/staff
+/staff
 
 Get staff by ID
 http://127.0.0.1:8000/staff/1
