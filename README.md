@@ -19,19 +19,24 @@ uvicorn app:app --reload
 
 Once Uvicorn starts, it prints something like:
 Uvicorn running on http://127.0.0.1:8000
+
 Then you can visit:
 ✔️ API root
 http://127.0.0.1:8000/
+
 ✔️ Auto generated Swagger UI
 http://127.0.0.1:8000/docs
+
 ✔️ Alternative ReDoc documentation
 http://127.0.0.1:8000/redoc
 
-Test endpoints:
+Testing the endpoints:
 Health check
 http://127.0.0.1:8000/health
+
 Search staff
 http://127.0.0.1:8000/staff
+
 Get staff by ID
 http://127.0.0.1:8000/staff/1
 
