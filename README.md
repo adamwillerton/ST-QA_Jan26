@@ -36,5 +36,5 @@ Search staff
 /staff
 
 Get staff by ID
-http://127.0.0.1:8000/staff/1
+/staff/1
 
