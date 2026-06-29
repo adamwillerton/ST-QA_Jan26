@@ -41,7 +41,7 @@ jobs:
 
       - name: Start FastAPI app (Uvicorn) in background
         run: |
-          nohup uvicorn main:app --host 127.0.0.1 --port 8000 &
+          nohup uvicorn app:app --host 127.0.0.1 --port 8000 &
           for i in {1..20}; do
             if curl -fsS http://127.0.0.1:8000/health > /dev/null; then
               echo "Server is up!"
