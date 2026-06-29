@@ -27,7 +27,7 @@
               "  pm.response.to.have.status(200);",
               "});",
               "",
-              "pm.test('body is {"status":"ok"}', function () {",
+              "pm.test('body is status ok', function () {",
               "  pm.expect(pm.response.json()).to.eql({ status: 'ok' });",
               "});"
             ],
