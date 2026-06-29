@@ -24,13 +24,12 @@ jobs:
           python -m pip install --upgrade pip
           pip install fastapi uvicorn pytest flake8 httpx
 
-    #  - name: Lint (flake8)
-    #    run: flake8 . --max-line-length=120
+      # - name: Lint (flake8)
+      #   run: flake8 . --max-line-length=120
 
       - name: Run unit tests (pytest)
         run: pytest -q
 
-      # ---------- POSTMAN / NEWMAN ----------
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -43,9 +42,8 @@ jobs:
       - name: Start FastAPI app (Uvicorn) in background
         run: |
           nohup uvicorn main:app --host 127.0.0.1 --port 8000 &
-          # Wait for server to be ready
           for i in {1..20}; do
-            if curl -fsS http://127.0.0.1:8000/health >/dev/null; then
+            if curl -fsS http://127.0.0.1:8000/health > /dev/null; then
               echo "Server is up!"
               break
             fi
@@ -56,15 +54,15 @@ jobs:
       - name: Run Postman tests with Newman
         run: |
           mkdir -p newman-reports
-          newman run "postman/Staff API.postman_collection.json" </span>
-            -e postman/local.postman_environment.json </span>
-            --reporters cli,junit,htmlextra </span>
-            --reporter-junit-export newman-reports/results.xml </span>
+          newman run "postman/Staff API.postman_collection.json" \
+            -e postman/local.postman_environment.json \
+            --reporters cli,junit,htmlextra \
+            --reporter-junit-export newman-reports/results.xml \
             --reporter-htmlextra-export newman-reports/report.html
 
       - name: Upload Newman reports
-        uses: actions/upload-artifact@v4
         if: always()
+        uses: actions/upload-artifact@v4
         with:
           name: newman-reports
           path: newman-reports
